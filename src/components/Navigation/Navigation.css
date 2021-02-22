@@ -1,0 +1,16 @@
+.Navigation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: fixed;
+    bottom: 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 375px;
+}
+
+.Navigation__button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #666;
+    font-size: 16px;
+}

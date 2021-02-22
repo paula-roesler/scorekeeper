@@ -2,4 +2,8 @@
     padding: 10px;
     border: 1px solid #666;
     font-size: 16px;
+    position: absolute;
+    bottom: 80px;
+    width: 375px;
+    border-radius: 8px;    
 }
