@@ -1,14 +1,11 @@
 import './App.css';
-import PlayerForm from './components/PlayerForm/PlayerForm';
-import Player from './components/Player/Player';
-import Button from './components/Button/Button';
+import GameForm from './components/GameForm/GameForm'
 
 function App() {
   return (
     <div className="App">
-      <PlayerForm />
-      <Player />
-      <Button />
+      <h1>Hallo</h1>
+      <GameForm />
     </div>
   );
 }
