@@ -2,6 +2,10 @@ import './Button.css'
 
 export default function Button() {
     return (
-        <div>Button</div>
+        <>
+            <button>-</button>
+        <span className="Player__score">{score}</span>
+        <button>+</button>
+        <Button/>
     )
 }

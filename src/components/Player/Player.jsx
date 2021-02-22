@@ -5,9 +5,7 @@ export default function Player({name, score}) {
     return (
         <div className="Player">
             <span>{name}</span>
-            <button>-</button>
-            <span>{score}</span>
-            <button>+</button>
+            <Button />
         </div>
     )
 }
