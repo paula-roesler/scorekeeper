@@ -4,8 +4,10 @@ import './Player.css'
 export default function Player({name, score}) {
     return (
         <div className="Player">
-            <span>{name}</span>
-            <Button />
+            <span className="Player__name">{name}</span>
+            <button className="Player__button">-</button>
+            <span>{score}</span>
+            <button className="Player__button">+</button>
         </div>
     )
 }
