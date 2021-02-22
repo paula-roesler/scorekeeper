@@ -1,10 +1,10 @@
 import './Input.css'
 
-export default function Input(labelText, placeholderText) {
+export default function Input({labelText, placeholderText}) {
     return (
-        <label>
+        <label className="Input__label">
             {labelText}
-            <input pLaceholder={placeholderText} />
+            <input className="Input__input" pLaceholder={placeholderText} />
         </label>
 
     )
