@@ -1,14 +1,12 @@
 .Player {
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.Player__name {
-    display: inline-block;
-    padding-right: 20px;
-}
-
-.Player__button {
-    width: 35px;
-    height: 35px;
-    margin: 0 10px;
+.Player__score {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
 }

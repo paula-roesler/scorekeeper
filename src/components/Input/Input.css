@@ -1,9 +1,8 @@
-.Input__label {
-    display: grid;
-    gap: 5px;
+.Input {
+  display: grid;
+  gap: 4px;
 }
 
-.Input__input {
-    padding: 10px;
-    border: 1px solid #666;
+.Input input {
+  border: 2px solid #bbb;
 }

@@ -1,13 +1,14 @@
-import Button from '../Button/Button'
 import './Player.css'
 
-export default function Player({name, score}) {
-    return (
-        <div className="Player">
-            <span className="Player__name">{name}</span>
-            <button className="Player__button">-</button>
-            <span>{score}</span>
-            <button className="Player__button">+</button>
-        </div>
-    )
+export default function Player({ name, score, onMinus, onPlus }) {
+  return (
+    <section className="Player">
+      {name}
+      <div className="Player__score">
+        <button onClick={onMinus}>-</button>
+        <span>{score}</span>
+        <button onClick={onPlus}>+</button>
+      </div>
+    </section>
+  )
 }
