@@ -6,9 +6,11 @@ export default createGlobalStyle`
   }
   
   body {
-    margin: 0;
+    padding: 0 10px;
+    margin: 0 auto;
     font-size: 112.5%;
     font-family: sans-serif;
+    max-width: 414px;
   }
   
   input,

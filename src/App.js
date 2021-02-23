@@ -12,20 +12,22 @@ function App() {
   return (
     <AppGrid>
       <AppHeader title="Play the game" />
-      <PlayerForm onAddPlayer={handleAddPlayer} />
-      {players.map((player, index) => (
-        <Player
-          name={player.name}
-          score={player.score}
-          onPlus={() => handlePlus(index)}
-          onMinus={() => handleMinus(index)}
-        />
-      ))}
+      <main>
+        <PlayerForm onAddPlayer={handleAddPlayer} />
+        {players.map((player, index) => (
+          <Player
+            name={player.name}
+            score={player.score}
+            onPlus={() => handlePlus(index)}
+            onMinus={() => handleMinus(index)}
+          />
+        ))}
 
-      <Button bgColor="tomato" onClick={resetScore}>
-        Reset scores
-      </Button>
-      <ResetButton onClick={resetAll}>Reset all</ResetButton>
+        <Button bgColor="cornflowerblue" onClick={resetScore}>
+          Reset scores
+        </Button>
+        <ResetButton onClick={resetAll}>Reset all</ResetButton>
+      </main>
       <Navigation />
     </AppGrid>
   )
@@ -68,7 +70,7 @@ const AppGrid = styled.div`
 `
 
 const ResetButton = styled(Button)`
-  background-color: lightcoral;
+  background-color: cornflowerblue;
 `
 
 export default App
