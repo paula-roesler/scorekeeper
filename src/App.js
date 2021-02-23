@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components/macro'
+import AppHeader from './components/AppHeader'
 import Button from './components/Button'
 import Player from './components/Player'
 import PlayerForm from './components/PlayerForm'
@@ -10,6 +11,7 @@ function App() {
 
   return (
     <AppGrid>
+      <AppHeader title="Play the game" />
       <PlayerForm onAddPlayer={handleAddPlayer} />
       {players.map((player, index) => (
         <Player
