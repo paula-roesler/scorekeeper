@@ -1,13 +1,14 @@
-import './Player.css'
+// import './Player.css'
+import Button from '../Button'
 
 export default function Player({ name, score, onMinus, onPlus }) {
   return (
     <section className="Player">
       {name}
       <div className="Player__score">
-        <button onClick={onMinus}>-</button>
+        <Button onClick={onMinus}>-</Button>
         <span>{score}</span>
-        <button onClick={onPlus}>+</button>
+        <Button onClick={onPlus}>+</Button>
       </div>
     </section>
   )

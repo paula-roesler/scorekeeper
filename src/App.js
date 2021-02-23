@@ -1,11 +1,32 @@
 import { useState } from 'react'
-import './App.css'
+import styled from 'styled-components/macro'
 import Button from './components/Button'
 import Player from './components/Player'
 import PlayerForm from './components/PlayerForm'
+import Navigation from './components/Navigation/'
 
 function App() {
   const [players, setPlayers] = useState([])
+
+  return (
+    <AppGrid>
+      <PlayerForm onAddPlayer={handleAddPlayer} />
+      {players.map((player, index) => (
+        <Player
+          name={player.name}
+          score={player.score}
+          onPlus={() => handlePlus(index)}
+          onMinus={() => handleMinus(index)}
+        />
+      ))}
+
+      <Button bgColor="tomato" onClick={resetScore}>
+        Reset scores
+      </Button>
+      <ResetButton onClick={resetAll}>Reset all</ResetButton>
+      <Navigation />
+    </AppGrid>
+  )
 
   function handleAddPlayer(name) {
     setPlayers(oldPlayers => [...oldPlayers, { name, score: 0 }])
@@ -36,23 +57,16 @@ function App() {
       ...players.slice(index + 1),
     ])
   }
-
-  return (
-    <div className="App">
-      <PlayerForm onAddPlayer={handleAddPlayer} />
-      {players.map((player, index) => (
-        <Player
-          name={player.name}
-          score={player.score}
-          onPlus={() => handlePlus(index)}
-          onMinus={() => handleMinus(index)}
-        />
-      ))}
-
-      <Button text="Reset scores" onClick={resetScore}></Button>
-      <Button text="Reset all" onClick={resetAll}></Button>
-    </div>
-  )
 }
+
+const AppGrid = styled.div`
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+`
+
+const ResetButton = styled(Button)`
+  background-color: lightcoral;
+`
 
 export default App
