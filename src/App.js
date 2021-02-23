@@ -1,10 +1,10 @@
 import './App.css';
 import Header from './components/Header'
 import GameForm from './components/GameForm'
-import Navigation from './components/Navigation'
 import Player from './components/Player'
 import Button from './components/Button'
 import HistoryEntry from './components/HistoryEntry'
+import Navigation from './components/Navigation'
 
 
 function App() {
