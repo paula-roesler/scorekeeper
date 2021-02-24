@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import styled from 'styled-components/macro'
+import AppGrid from './components/AppGrid'
 import AppHeader from './components/AppHeader'
 import Button from './components/Button'
 import Player from './components/Player'
 import PlayerForm from './components/PlayerForm'
-import Navigation from './components/Navigation/'
+import Navigation from './components/Navigation'
 
 function App() {
   const [players, setPlayers] = useState([])
@@ -12,7 +13,7 @@ function App() {
   return (
     <AppGrid>
       <AppHeader title="Play the game" />
-      <main>
+      <AppGridMain>
         <PlayerForm onAddPlayer={handleAddPlayer} />
         {players.map((player, index) => (
           <Player
@@ -27,8 +28,11 @@ function App() {
           Reset scores
         </Button>
         <ResetButton onClick={resetAll}>Reset all</ResetButton>
-      </main>
-      <Navigation />
+      </AppGridMain>
+      <Navigation
+        activeIndex={0}
+        onNavigate={index => console.log('onNavigate', index)}
+      />
     </AppGrid>
   )
 
@@ -63,14 +67,16 @@ function App() {
   }
 }
 
-const AppGrid = styled.div`
-  display: grid;
-  gap: 20px;
-  padding: 20px;
-`
-
 const ResetButton = styled(Button)`
   background-color: cornflowerblue;
+`
+
+const AppGridMain = styled.main`
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+  overflow-y: scroll;
+  padding: 20px;
 `
 
 export default App

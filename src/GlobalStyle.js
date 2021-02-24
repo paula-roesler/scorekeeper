@@ -6,11 +6,8 @@ export default createGlobalStyle`
   }
   
   body {
-    padding: 0 10px;
-    margin: 0 auto;
     font-size: 112.5%;
     font-family: sans-serif;
-    max-width: 414px;
   }
   
   input,
