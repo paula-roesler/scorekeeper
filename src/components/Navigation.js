@@ -1,21 +1,27 @@
 import React from 'react'
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 import Button from './Button'
 
-export default function Navigation({ onNavigate, activeIndex }) {
+export default function Navigation({ onNavigate, currentPage }) {
   return (
-    <Navi>
-      <NavButtons isActive={activeIndex === 0} onClick={() => onNavigate(0)}>
+    <Nav>
+      <NavButtons
+        isActive={currentPage === 'play'}
+        onClick={() => onNavigate('play')}
+      >
         Play
       </NavButtons>
-      <NavButtons isActive={activeIndex === 1} onClick={() => onNavigate(1)}>
+      <NavButtons
+        isActive={currentPage === 'history'}
+        onClick={() => onNavigate('history')}
+      >
         History
       </NavButtons>
-    </Navi>
+    </Nav>
   )
 }
 
-const Navi = styled.nav`
+const Nav = styled.nav`
   width: 100%;
   max-width: 414px;
   display: flex;
@@ -23,6 +29,8 @@ const Navi = styled.nav`
 `
 
 const NavButtons = styled(Button)`
-  background-color: ${props => (props.active ? 'white' : 'palevioletred')};
-  color: ${props => (props.active ? 'palevioletred' : 'white')};
+  background-color: ${props => (props.active ? 'white' : 'royalblue')};
+  ${props =>
+    props.isActive &&
+    'background-color: white; color: royalblue; border: 2px solid royalblue'}
 `

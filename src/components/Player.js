@@ -25,6 +25,7 @@ const PlayerWrapper = styled.section`
   align-items: center;
   justify-content: space-between;
   color: royalblue;
+  margin-bottom: 10px;
 `
 const PlayerScore = styled.div`
   color: ${props => props.color || 'royalblue'};

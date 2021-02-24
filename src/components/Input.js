@@ -1,27 +1,25 @@
-import styled from 'styled-components/macro'
+import React from 'react'
+import styled from 'styled-components'
 
-export default function Input({ labelText, placeholderText, name }) {
+export default function Input({ labelText, placeholder, name }) {
   return (
     <Label>
       {labelText}
-      <InputField
-        name={name}
-        type="text"
-        placeholder={placeholderText}
-      ></InputField>
+      <InputStyled name={name} placeholder={placeholder} type="text" />
     </Label>
   )
 }
 
-const Label = styled.form`
-  border: 2px solid royalblue;
+const Label = styled.label`
+  display: grid;
+  gap: 4px;
   color: royalblue;
   margin-top: 5px;
   width: 100%;
   font-weight: bold;
 `
 
-const InputField = styled.input`
+const InputStyled = styled.input`
   border: 2px solid royalblue;
   color: royalblue;
   margin-top: 5px;
