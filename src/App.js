@@ -69,14 +69,14 @@ function App() {
 
 const ResetButton = styled(Button)`
   background-color: cornflowerblue;
+  height: 40px;
 `
 
 const AppGridMain = styled.main`
-  display: grid;
-  justify-items: center;
-  gap: 20px;
   overflow-y: scroll;
   padding: 20px;
+  display: grid;
+  gap: 20px;
 `
 
 export default App

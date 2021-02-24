@@ -4,11 +4,11 @@ import styled from 'styled-components/macro'
 export default function PlayerForm({ onAddPlayer }) {
   return (
     <AddPlayerForm onSubmit={handleSubmit}>
-      <label>
+      <Label>
         Add player:
         <br />
-        <input name="player" placeholder="Player name" />
-      </label>
+        <Input name="player" placeholder="Player name"></Input>
+      </Label>
     </AddPlayerForm>
   )
 
@@ -24,6 +24,16 @@ export default function PlayerForm({ onAddPlayer }) {
 }
 
 const AddPlayerForm = styled.form`
-  border: 2px solid #bbb;
+  width: 100%;
+`
+const Label = styled.label`
+  font-weight: bold;
+  color: royalblue;
+`
+
+const Input = styled.input`
+  border: 2px solid royalblue;
+  color: royalblue;
+  margin-top: 5px;
   width: 100%;
 `
