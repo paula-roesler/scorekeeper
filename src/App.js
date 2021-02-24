@@ -1,61 +1,74 @@
+import React from 'react'
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import styled from 'styled-components/macro'
-import AppGrid from './components/AppGrid'
-import AppHeader from './components/AppHeader'
+import Header from './components/Header'
 import Button from './components/Button'
 import GameForm from './components/GameForm'
 import Player from './components/Player'
-import PlayerForm from './components/PlayerForm'
 import HistoryEntry from './components/HistoryEntry'
 import Navigation from './components/Navigation'
 
-function App() {
+export default function App() {
   const [players, setPlayers] = useState([])
+  const [nameOfGame, setNameOfGame] = useState('')
+  const [currentPage, setCurrentPage] = useState('play')
+  const [history, setHistory] = useState([])
 
   return (
-    <AppGrid>
-      <AppHeader title="Play the game" />
-      <AppGridMain>
-        <PlayerForm onAddPlayer={handleAddPlayer} />
-        {players.map(({ name, score }, index) => (
-          <Player
-            key={name}
-            name={name}
-            score={score}
-            onPlus={() => handlePlus(index)}
-            onMinus={() => handleMinus(index)}
-          />
-          // React.createElement(Player, {name, score, onPlus: () => handlePlus(index)})
-        ))}
+    <AppLayout>
+      {/* conditional rendering */}
+      {currentPage === 'play' && (
+        <div>
+          <GameForm onCreateGame={createGame} />
+        </div>
+      )}
 
-        <ButtonGrid>
-          <Button onClick={resetScores}>Reset scores</Button>
-          <DangerButton onClick={resetAll}>Reset all</DangerButton>
-        </ButtonGrid>
+      {currentPage === 'game' && (
+        <div>
+          <Header>{nameOfGame}</Header>
+          {players.map(({ name, score }, index) => (
+            <Player
+              key={name}
+              name={name}
+              score={score}
+              onPlus={() => handlePlus(index)}
+              onMinus={() => handleMinus(index)}
+            />
+          ))}
+          <ButtonGrid>
+            <Button onClick={resetScores}>Reset scores</Button>
+            <Button onClick={endGame}>End game</Button>
+          </ButtonGrid>
+        </div>
+      )}
 
-        <GameForm onCreateGame={data => console.log('onCreateGame', data)} />
+      {currentPage === 'history' && (
+        <HistoryWrapper>
+          {history.map(({ nameOfGame, players, id }) => (
+            <HistoryEntry key={id} nameOfGame={nameOfGame} players={players} />
+          ))}
+        </HistoryWrapper>
+      )}
 
-        <HistoryEntry
-          nameOfGame="Carcassonne"
-          players={[
-            { name: 'John Doe', score: 10 },
-            { name: 'Jane Doe', score: 20 },
-          ]}
-        />
-      </AppGridMain>
-      <Navigation
-        activeIndex={0}
-        onNavigate={index => console.log('onNavigate', index)}
-      />
-    </AppGrid>
+      {(currentPage === 'play' || currentPage === 'history') && (
+        <Navigation currentPage={currentPage} onNavigate={setCurrentPage} />
+      )}
+    </AppLayout>
   )
 
-  function handleAddPlayer(name) {
-    setPlayers(oldPlayers => [...oldPlayers, { name, score: 0 }])
+  function createGame({ nameOfGame, playerNames }) {
+    // playerNames is ['Jane', 'John']
+    setNameOfGame(nameOfGame)
+    setPlayers(playerNames.map(name => ({ name, score: 0 })))
+    setCurrentPage('game')
   }
 
-  function resetAll() {
+  function endGame() {
+    setHistory([{ players, nameOfGame, id: uuidv4() }, ...history])
     setPlayers([])
+    setNameOfGame('')
+    setCurrentPage('play')
   }
 
   function resetScores() {
@@ -81,22 +94,20 @@ function App() {
   }
 }
 
-const DangerButton = styled(Button)`
-  background-color: white;
-  border: 2px solid royalblue;
-  color: royalblue;
-`
-const ButtonGrid = styled.div`
-  display: grid;
-  gap: 5px;
-  grid-template-columns: 1fr 1fr;
-`
-
-const AppGridMain = styled.main`
-  overflow-y: scroll;
-  padding: 20px;
+const AppLayout = styled.div`
   display: grid;
   gap: 20px;
+  padding: 20px;
 `
 
-export default App
+const HistoryWrapper = styled.div`
+  display: grid;
+  gap: 28px;
+`
+
+const ButtonGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+`

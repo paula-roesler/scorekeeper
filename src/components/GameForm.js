@@ -1,21 +1,23 @@
 import React from 'react'
-import styled from 'styled-components/macro'
 import Button from './Button'
 import Input from './Input'
+import styled from 'styled-components'
 
 export default function GameForm({ onCreateGame }) {
   return (
-    <GameFormForm onSubmit={handleSubmit}>
-      <GameLabel>
-        Add game:
-        <Input name="nameOfGame" placeholder="e.g. Carcassonne" />
-      </GameLabel>
-      <GameLabel>
-        Player names:
-        <Input name="playerNames" placeholder="e.g. John Doe, Jane Doe" />
-      </GameLabel>
+    <FormGrid onSubmit={handleSubmit}>
+      <Input
+        name="nameOfGame"
+        labelText="Name of game"
+        placeholder="e.g. Carcassonne"
+      />
+      <Input
+        name="playerNames"
+        labelText="Player names"
+        placeholder="e.g. John Doe, Jane Doe"
+      />
       <Button>Create game</Button>
-    </GameFormForm>
+    </FormGrid>
   )
 
   function handleSubmit(event) {
@@ -32,12 +34,7 @@ export default function GameForm({ onCreateGame }) {
   }
 }
 
-const GameFormForm = styled.form`
+const FormGrid = styled.form`
   display: grid;
   gap: 10px;
-`
-const GameLabel = styled.label`
-  font-weight: bold;
-  color: royalblue;
-  border: none;
 `
