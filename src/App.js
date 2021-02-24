@@ -3,6 +3,7 @@ import styled from 'styled-components/macro'
 import AppGrid from './components/AppGrid'
 import AppHeader from './components/AppHeader'
 import Button from './components/Button'
+import GameForm from './components/GameForm'
 import Player from './components/Player'
 import PlayerForm from './components/PlayerForm'
 import HistoryEntry from './components/HistoryEntry'
@@ -16,25 +17,29 @@ function App() {
       <AppHeader title="Play the game" />
       <AppGridMain>
         <PlayerForm onAddPlayer={handleAddPlayer} />
-        {players.map((player, index) => (
+        {players.map(({ name, score }, index) => (
           <Player
-            name={player.name}
-            score={player.score}
+            key={name}
+            name={name}
+            score={score}
             onPlus={() => handlePlus(index)}
             onMinus={() => handleMinus(index)}
           />
+          // React.createElement(Player, {name, score, onPlus: () => handlePlus(index)})
         ))}
 
-        <Button bgColor="cornflowerblue" onClick={resetScore}>
-          Reset scores
-        </Button>
-        <ResetButton onClick={resetAll}>Reset all</ResetButton>
+        <ButtonGrid>
+          <Button onClick={resetScores}>Reset scores</Button>
+          <DangerButton onClick={resetAll}>Reset all</DangerButton>
+        </ButtonGrid>
+
+        <GameForm onCreateGame={data => console.log('onCreateGame', data)} />
 
         <HistoryEntry
-          nameOfGame="Carcasonne"
+          nameOfGame="Carcassonne"
           players={[
-            { name: 'John Doe', score: 20 },
-            { name: 'Jane Doe', core: 30 },
+            { name: 'John Doe', score: 10 },
+            { name: 'Jane Doe', score: 20 },
           ]}
         />
       </AppGridMain>
@@ -53,7 +58,7 @@ function App() {
     setPlayers([])
   }
 
-  function resetScore() {
+  function resetScores() {
     setPlayers(players.map(player => ({ ...player, score: 0 })))
   }
 
@@ -76,9 +81,15 @@ function App() {
   }
 }
 
-const ResetButton = styled(Button)`
-  background-color: cornflowerblue;
-  height: 40px;
+const DangerButton = styled(Button)`
+  background-color: white;
+  border: 2px solid royalblue;
+  color: royalblue;
+`
+const ButtonGrid = styled.div`
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 1fr 1fr;
 `
 
 const AppGridMain = styled.main`

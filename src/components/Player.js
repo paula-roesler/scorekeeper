@@ -7,7 +7,7 @@ const MIN_HUE_VALUE = 0 // 0 is red
 export default function Player({ name, score, onMinus, onPlus }) {
   const maxHue = Math.min(score * 10, MAX_HUE_VALUE)
   const hue = Math.max(maxHue, MIN_HUE_VALUE)
-  const color = score === 10 ? 'black' : `hsl(${hue}, 50%, 50%)`
+  const color = score === 0 ? 'royalblue' : `hsl(${hue}, 50%, 50%)`
   return (
     <PlayerWrapper>
       {name}

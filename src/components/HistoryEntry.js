@@ -2,19 +2,29 @@ import styled from 'styled-components/macro'
 
 export default function HistoryEntry({ nameOfGame, players }) {
   return (
-    <HistoryEntryContainer>
-      {nameOfGame}
+    <HistoryEntryWrapper>
+      <GameTitle>{nameOfGame}</GameTitle>
       {players.map((player, index) => (
-        <div key={index} className="HistoryEntry__player">
+        <HistoryEntryPlayer key={index}>
           <span>{player.name}</span>
           <span>{player.score}</span>
-        </div>
+        </HistoryEntryPlayer>
       ))}
-    </HistoryEntryContainer>
+    </HistoryEntryWrapper>
   )
 }
 
-const HistoryEntryContainer = styled.section`
+const HistoryEntryWrapper = styled.section`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+`
+const GameTitle = styled.h2`
+  width: 100%;
+  color: royalblue;
+`
+
+const HistoryEntryPlayer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  color: royalblue;s
 `

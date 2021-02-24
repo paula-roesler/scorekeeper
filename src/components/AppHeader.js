@@ -3,7 +3,7 @@ import styled from 'styled-components/macro'
 export default function AppHeader({ title }) {
   return (
     <Header className="Header">
-      <h1>{title}</h1>
+      <AppHeaderTitle>{title}</AppHeaderTitle>
     </Header>
   )
 }
@@ -11,8 +11,11 @@ export default function AppHeader({ title }) {
 const Header = styled.header`
   text-align: center;
   background-color: royalblue;
+`
+const AppHeaderTitle = styled.h1`
   color: #fcfcfc;
-  font-size: 0.7em;
+  font-size: 1.2em;
+  line-height: 0.8em;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   padding-top: 5px;

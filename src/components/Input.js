@@ -1,10 +1,14 @@
 import styled from 'styled-components/macro'
 
-export default function Input({ labelText, placeholderText }) {
+export default function Input({ labelText, placeholderText, name }) {
   return (
     <Label>
       {labelText}
-      <InputField type="text" placeholder={placeholderText}></InputField>
+      <InputField
+        name={name}
+        type="text"
+        placeholder={placeholderText}
+      ></InputField>
     </Label>
   )
 }
