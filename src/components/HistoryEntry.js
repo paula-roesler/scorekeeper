@@ -1,8 +1,8 @@
-import './HistoryEntry.css'
+import styled from 'styled-components/macro'
 
 export default function HistoryEntry({ nameOfGame, players }) {
   return (
-    <section className="HistoryEntry">
+    <HistoryEntryContainer>
       {nameOfGame}
       {players.map((player, index) => (
         <div key={index} className="HistoryEntry__player">
@@ -10,6 +10,11 @@ export default function HistoryEntry({ nameOfGame, players }) {
           <span>{player.score}</span>
         </div>
       ))}
-    </section>
+    </HistoryEntryContainer>
   )
 }
+
+const HistoryEntryContainer = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`

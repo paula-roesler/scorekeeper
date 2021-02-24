@@ -5,6 +5,7 @@ import AppHeader from './components/AppHeader'
 import Button from './components/Button'
 import Player from './components/Player'
 import PlayerForm from './components/PlayerForm'
+import HistoryEntry from './components/HistoryEntry'
 import Navigation from './components/Navigation'
 
 function App() {
@@ -28,6 +29,14 @@ function App() {
           Reset scores
         </Button>
         <ResetButton onClick={resetAll}>Reset all</ResetButton>
+
+        <HistoryEntry
+          nameOfGame="Carcasonne"
+          players={[
+            { name: 'John Doe', score: 20 },
+            { name: 'Jane Doe', core: 30 },
+          ]}
+        />
       </AppGridMain>
       <Navigation
         activeIndex={0}

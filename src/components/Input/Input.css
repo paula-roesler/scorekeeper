@@ -1,8 +1,0 @@
-.Input {
-  display: grid;
-  gap: 4px;
-}
-
-.Input input {
-  border: 2px solid #bbb;
-}
